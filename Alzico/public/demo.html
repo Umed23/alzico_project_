@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Alzico - All 13 Tests Working Demo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .demo-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        .demo-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .demo-title {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        .demo-subtitle {
+            color: #7f8c8d;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+        .tests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .test-demo-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 5px solid #4A90E2;
+            transition: all 0.3s ease;
+        }
+        .test-demo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .test-demo-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .test-demo-icon {
+            font-size: 2em;
+            margin-right: 15px;
+        }
+        .test-demo-info h3 {
+            margin: 0;
+            color: #2c3e50;
+            font-size: 1.3em;
+        }
+        .test-demo-info p {
+            margin: 5px 0 0 0;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .test-demo-description {
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .test-demo-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .test-demo-details {
+            display: flex;
+            gap: 10px;
+        }
+        .test-demo-detail {
+            background: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            color: #666;
+        }
+        .test-demo-status {
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .status-working {
+            background: #d4edda;
+            color: #155724;
+        }
+        .test-demo-button {
+            background: #4A90E2;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        .test-demo-button:hover {
+            background: #357ABD;
+            transform: translateY(-2px);
+        }
+        .demo-summary {
+            background: #e3f2fd;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        .summary-title {
+            color: #1976d2;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .summary-list {
+            color: #1976d2;
+            line-height: 1.6;
+        }
+        .demo-actions {
+            text-align: center;
+        }
+        .demo-action-btn {
+            background: #34C759;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+        .demo-action-btn:hover {
+            background: #28a745;
+            transform: translateY(-2px);
+        }
+        .demo-action-btn.secondary {
+            background: #6c757d;
+        }
+        .demo-action-btn.secondary:hover {
+            background: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="demo-header">
+            <h1 class="demo-title">🎯 All 13 Cognitive Tests - FULLY WORKING!</h1>
+            <p class="demo-subtitle">
+                Every single cognitive assessment is now functional and ready for use. 
+                Click any test below to start a real, working cognitive assessment.
+            </p>
+        </div>
+
+        <div class="demo-summary">
+            <div class="summary-title">✅ What's Working:</div>
+            <ul class="summary-list">
+                <li><strong>All 13 Tests:</strong> MMSE, ADAS-Cog13, CDR, Clock Drawing, Trail Making, Verbal Fluency, Digit Span, Boston Naming, Rey Auditory, Stroop Test, Category Fluency, Block Design, Logical Memory</li>
+                <li><strong>Real Questions:</strong> Each test has authentic, clinically-validated questions</li>
+                <li><strong>Working Scoring:</strong> Professional scoring systems with clinical interpretations</li>
+                <li><strong>Results Storage:</strong> All test results are saved and tracked</li>
+                <li><strong>Progress Dashboard:</strong> View your cognitive health progress over time</li>
+                <li><strong>Medical Recommendations:</strong> Professional healthcare recommendations based on results</li>
+            </ul>
+        </div>
+
+        <div class="tests-grid">
+            <!-- MMSE -->
+            <div class="test-demo-card">
+                <div class="test-demo-header">
+                    <div class="test-demo-icon">🧠</div>
+                    <div class="test-demo-info">
+                        <h3>MMSE</h3>
+                        <p>Mini-Mental State Examination</p>
+                    </div>
+                </div>
+                <p class="test-demo-description">
+                    30-point global cognitive assessment covering orientation, memory, attention, language, and visuospatial skills.
+                </p>
+                <div class="test-demo-meta">
+                    <div class="test-demo-details">
+                        <span class="test-demo-detail">⏱️ 10 min</span>
+                        <span class="test-demo-detail">18 questions</span>
+                    </div>
+                    <span class="test-demo-status status-working">WORKING</span>
+                </div>
+                <button class="test-demo-button" onclick="startTest('mmse')">Start MMSE Test</button>
+            </div>
+
+            <!-- ADAS-Cog13 -->
+            <div class="test-demo-card">
+                <div class="test-demo-header">
+                    <div class="test-demo-icon">🔬</div>
+                    <div class="test-demo-info">
+                        <h3>ADAS-Cog13</h3>
+                        <p>Alzheimer's Disease Assessment Scale</p>
+                    </div>
+                </div>
+                <p class="test-demo-description">
+                    13-item comprehensive assessment specifically designed for Alzheimer's disease detection and monitoring.
+                </p>
+                <div class="test-demo-meta">
+                    <div class="test-demo-details">
+                        <span class="test-demo-detail">⏱️ 20 min</span>
+                        <span class="test-demo-detail">13 questions</span>
+                    </div>
+                    <span class="test-demo-status status-working">WORKING</span>
+                </div>
+                <button class="test-demo-button" onclick="startTest('adas-cog13')">Start ADAS-Cog13</button>
+            </div>
+
+            <!-- CDR -->
+            <div class="test-demo-card">
+                <div class="test-demo-header">
+                    <div class="test-demo-icon">📊</div>
+                    <div class="test-demo-info">
+                        <h3>CDR</h3>
+                        <p>Clinical Dementia Rating Scale</p>
+                    </div>
+                </div>
+                <p class="test-demo-description">
+                    Dementia staging and severity assessment across six functional domains.
+                </p>
+                <div class="test-demo-meta">
+                    <div class="test-demo-details">
+                        <span class="test-demo-detail">⏱️ 15 min</span>
+                        <span class="test-demo-detail">6 questions</span>
+                    </div>
+                    <span class="test-demo-status status-working">WORKING</span>
+                </div>
+                <button class="test-demo-button" onclick="startTest('cdr')">Start CDR Test</button>
+            </div>
+
+            <!-- Clock Drawing -->
+            <div class="test-demo-card">
+                <div class="test-demo-header">
+                    <div class="test-demo-icon">🕐</div>
+                    <div class="test-demo-info">
+                        <h3>Clock Drawing</h3>
+                        <p>Clock Drawing Test</p>
+                    </div>
+                </div>
+                <p class="test-demo-description">
+                    Visuospatial and executive function assessment requiring clock face construction.
+                </p>
+                <div class="test-demo-meta">
+                    <div class="test-demo-details">
+                        <span class="test-demo-detail">⏱️ 5 min</span>
+                        <span class="test-demo-detail">1 question</span>
+                    </div>
+                    <span class="test-demo-status status-working">WORKING</span>
+                </div>
+                <button class="test-demo-button" onclick="startTest('clock-drawing')">Start Clock Test</button>
+            </div>
+
+            <!-- Trail Making -->
+            <div class="test-demo-card">
+                <div class="test-demo-header">
+                    <div class="test-demo-icon">🔄</div>
+                    <div class="test-demo-info">
+                        <h3>Trail Making</h3>
+                        <p>Trail Making Test</p>
+                    </div>
+                </div>
+                <p class="test-demo-description">
+                    Attention and executive function assessment measuring processing speed and mental flexibility.
+                </p>
+                <div class="test-demo-meta">
+                    <div class="test-demo-details">
+                        <span class="test-demo-detail">⏱️ 8 min</span>
+                        <span class="test-demo-detail">2 questions</span>
+                    </div>
+                    <span class="test-demo-status status-working">WORKING</span>
+                </div>
+                <button class="test-demo-button" onclick="startTest('trail-making')">Start Trail Test</button>
+            </div>
+
+            <!-- Verbal Fluency -->
+            <div class="test-demo-card">
+                <div class="test-demo-header">
+                    <div class="test-demo-icon">💬</div>
+                    <div class="test-demo-info">
+                        <h3>Verbal Fluency</h3>
+                        <p>Verbal Fluency Test (FAS)</p>
+                    </div>
+                </div>
+                <p class="test-demo-description">
+                    Language ability and executive function assessment measuring word generation.
+                </p>
+                <div class="test-demo-meta">
+                    <div class="test-demo-details">
+                        <span class="test-demo-detail">⏱️ 6 min</span>
+                        <span class="test-demo-detail">3 questions</span>
+                    </div>
+                    <span class="test-demo-status status-working">WORKING</span>
+                </div>
+                <button class="test-demo-button" onclick="startTest('verbal-fluency')">Start Fluency Test</button>
+            </div>
+
+            <!-- Digit Span -->
+            <div class="test-demo-card">
+                <div class="test-demo-header">
+                    <div class="test-demo-icon">🔢</div>
+                    <div class="test-demo-info">
+                        <h3>Digit Span</h3>
+                        <p>Digit Span Test</p>
+                    </div>
+                </div>
+                <p class="test-demo-description">
+                    Immediate and working memory assessment measuring number sequence recall.
+                </p>
+                <div class="test-demo-meta">
+                    <div class="test-demo-details">
+                        <span class="test-demo-detail">⏱️ 7 min</span>
+                        <span class="test-demo-detail">2 questions</span>
+                    </div>
+                    <span class="test-demo-status status-working">WORKING</span>
+                </div>
+                <button class="test-demo-button" onclick="startTest('digit-span')">Start Digit Test</button>
+            </div>
+
+            <!-- Boston Naming -->
+            <div class="test-demo-card">
+                <div class="test-demo-header">
+                    <div class="test-demo-icon">🖼️</div>
+                    <div class="test-demo-info">
+                        <h3>Boston Naming</h3>
+                        <p>Boston Naming Test</p>
+                    </div>
+                </div>
+                <p class="test-demo-description">
+                    Confrontational naming ability assessment measuring language function.
+                </p>
+                <div class="test-demo-meta">
+                    <div class="test-demo-details">
+                        <span class="test-demo-detail">⏱️ 8 min</span>
+                        <span class="test-demo-detail">15 questions</span>
+                    </div>
+                    <span class="test-demo-status status-working">WORKING</span>
+                </div>
+                <button class="test-demo-button" onclick="startTest('boston-naming')">Start Naming Test</button>
+            </div>
+
+            <!-- Rey Auditory -->
+            <div class="test-demo-card">
+                <div class="test-demo-header">
+                    <div class="test-demo-icon">🎧</div>
+                    <div class="test-demo-info">
+                        <h3>Rey Auditory</h3>
+                        <p>Rey Auditory Verbal Learning Test</p>
+                    </div>
+                </div>
+                <p class="test-demo-description">
+                    Verbal learning and memory assessment measuring word list recall.
+                </p>
+                <div class="test-demo-meta">
+                    <div class="test-demo-details">
+                        <span class="test-demo-detail">⏱️ 12 min</span>
+                        <span class="test-demo-detail">4 questions</span>
+                    </div>
+                    <span class="test-demo-status status-working">WORKING</span>
+                </div>
+                <button class="test-demo-button" onclick="startTest('rey-auditory')">Start Rey Test</button>
+            </div>
+
+            <!-- Stroop Test -->
+            <div class="test-demo-card">
+                <div class="test-demo-header">
+                    <div class="test-demo-icon">🎨</div>
+                    <div class="test-demo-info">
+                        <h3>Stroop Test</h3>
+                        <p>Stroop Color and Word Test</p>
+                    </div>
+                </div>
+                <p class="test-demo-description">
+                    Cognitive interference and executive function assessment measuring response inhibition.
+                </p>
+                <div class="test-demo-meta">
+                    <div class="test-demo-details">
+                        <span class="test-demo-detail">⏱️ 8 min</span>
+                        <span class="test-demo-detail">3 questions</span>
+                    </div>
+                    <span class="test-demo-status status-working">WORKING</span>
+                </div>
+                <button class="test-demo-button" onclick="startTest('stroop-test')">Start Stroop Test</button>
+            </div>
+
+            <!-- Category Fluency -->
+            <div class="test-demo-card">
+                <div class="test-demo-header">
+                    <div class="test-demo-icon">📝</div>
+                    <div class="test-demo-info">
+                        <h3>Category Fluency</h3>
+                        <p>Category Fluency Test</p>
+                    </div>
+                </div>
+                <p class="test-demo-description">
+                    Semantic memory and verbal fluency assessment measuring category word generation.
+                </p>
+                <div class="test-demo-meta">
+                    <div class="test-demo-details">
+                        <span class="test-demo-detail">⏱️ 5 min</span>
+                        <span class="test-demo-detail">1 question</span>
+                    </div>
+                    <span class="test-demo-status status-working">WORKING</span>
+                </div>
+                <button class="test-demo-button" onclick="startTest('category-fluency')">Start Category Test</button>
+            </div>
+
+            <!-- Block Design -->
+            <div class="test-demo-card">
+                <div class="test-demo-header">
+                    <div class="test-demo-icon">🧩</div>
+                    <div class="test-demo-info">
+                        <h3>Block Design</h3>
+                        <p>Block Design Test</p>
+                    </div>
+                </div>
+                <p class="test-demo-description">
+                    Visuospatial ability and constructional praxis assessment using geometric patterns.
+                </p>
+                <div class="test-demo-meta">
+                    <div class="test-demo-details">
+                        <span class="test-demo-detail">⏱️ 10 min</span>
+                        <span class="test-demo-detail">3 questions</span>
+                    </div>
+                    <span class="test-demo-status status-working">WORKING</span>
+                </div>
+                <button class="test-demo-button" onclick="startTest('block-design')">Start Block Test</button>
+            </div>
+
+            <!-- Logical Memory -->
+            <div class="test-demo-card">
+                <div class="test-demo-header">
+                    <div class="test-demo-icon">📖</div>
+                    <div class="test-demo-info">
+                        <h3>Logical Memory</h3>
+                        <p>Logical Memory Test</p>
+                    </div>
+                </div>
+                <p class="test-demo-description">
+                    Story recall and comprehension assessment measuring verbal memory.
+                </p>
+                <div class="test-demo-meta">
+                    <div class="test-demo-details">
+                        <span class="test-demo-detail">⏱️ 8 min</span>
+                        <span class="test-detail">2 questions</span>
+                    </div>
+                    <span class="test-demo-status status-working">WORKING</span>
+                </div>
+                <button class="test-demo-button" onclick="startTest('logical-memory')">Start Memory Test</button>
+            </div>
+        </div>
+
+        <div class="demo-actions">
+            <button class="demo-action-btn" onclick="window.open('results-dashboard.html', '_blank')">📊 View Results Dashboard</button>
+            <button class="demo-action-btn secondary" onclick="window.location.href='index.html'">🏠 Return to Main</button>
+        </div>
+    </div>
+
+    <script>
+        function startTest(testId) {
+            // Open the working test interface
+            window.open('test-interface.html?test=' + testId, '_blank');
+        }
+    </script>
+</body>
+</html> 

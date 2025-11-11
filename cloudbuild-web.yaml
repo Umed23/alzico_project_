@@ -1,0 +1,27 @@
+steps:
+  - name: gcr.io/cloud-builders/gcloud
+    dir: Alzico
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        printf 'REACT_APP_API_URL="%s"\n' "${_REACT_APP_API_URL}" > .env.production
+
+  - name: gcr.io/cloud-builders/npm
+    dir: Alzico
+    args: ['ci']
+
+  - name: gcr.io/cloud-builders/npm
+    dir: Alzico
+    args: ['run','build']
+
+  - name: gcr.io/cloud-builders/gsutil
+    args:
+      - -m
+      - rsync
+      - -r
+      - Alzico/dist
+      - gs://alzico-web-$PROJECT_ID
+
+options:
+  logging: CLOUD_LOGGING_ONLY

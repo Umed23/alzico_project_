@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#5B9BD5" />
+    <meta name="description" content="Alzico - Professional Alzheimer's Detection & Cognitive Assessment Platform" />
+    <title>Alzico - Cognitive Health Assessment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background: #EBF4F8;
+            min-height: 100vh;
+            color: #2C3E50;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Ensure all clickable elements are accessible */
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        button, a, [role="button"], [onclick] {
+            cursor: pointer;
+            touch-action: manipulation;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        #root {
+            width: 100%;
+            height: 100vh;
+            min-height: 100vh;
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            pointer-events: auto;
+        }
+
+        /* React Native Web compatibility */
+        #root > div {
+            display: flex;
+            flex: 1;
+            width: 100%;
+            height: 100%;
+            pointer-events: auto;
+        }
+        
+        /* Ensure React Native Web components are clickable */
+        div[class*="TouchableOpacity"],
+        div[role="button"],
+        button {
+            pointer-events: auto !important;
+            cursor: pointer !important;
+        }
+
+        /* Loading animation */
+        .loading-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 9999;
+            background: linear-gradient(135deg, #EBF4F8 0%, #F5F9FC 50%, #E8F4FD 100%);
+            pointer-events: none;
+        }
+
+        .loading-logo {
+            font-size: 64px;
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .loading-title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #2C3E50;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .loading-subtitle {
+            font-size: 18px;
+            color: #5D6D7E;
+            margin-bottom: 40px;
+            text-align: center;
+            max-width: 500px;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(91, 155, 213, 0.2);
+            border-top-color: #5B9BD5;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .loading-text {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #5D6D7E;
+        }
+
+        .progress-bar {
+            width: 300px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            margin-top: 30px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #5B9BD5, #6FAF8C);
+            width: 0%;
+            animation: progress 3s ease-in-out forwards;
+        }
+
+        @keyframes progress {
+            0% { width: 0%; }
+            50% { width: 70%; }
+            100% { width: 95%; }
+        }
+
+        /* Background decoration */
+        .bg-decoration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        .circle1 {
+            width: 300px;
+            height: 300px;
+            background: #5B9BD5;
+            top: -100px;
+            right: -100px;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.15;
+        }
+
+        .circle2 {
+            width: 200px;
+            height: 200px;
+            background: #6FAF8C;
+            bottom: 100px;
+            left: -50px;
+            animation: float 8s ease-in-out infinite reverse;
+            opacity: 0.15;
+        }
+
+        .circle3 {
+            width: 150px;
+            height: 150px;
+            background: #F4D03F;
+            top: 50%;
+            right: 10%;
+            animation: float 7s ease-in-out infinite;
+            opacity: 0.15;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .loading-logo {
+                font-size: 48px;
+            }
+            
+            .loading-title {
+                font-size: 28px;
+            }
+            
+            .loading-subtitle {
+                font-size: 16px;
+            }
+        }
+
+        /* Hide loading when React app loads */
+        .app-loaded .loading-container {
+            opacity: 0;
+            transition: opacity 0.5s ease-out;
+            pointer-events: none;
+        }
+
+        /* Fade in effect for root */
+        #root > div {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    
+    <!-- Background decoration -->
+    <div class="bg-decoration">
+        <div class="circle circle1"></div>
+        <div class="circle circle2"></div>
+        <div class="circle circle3"></div>
+    </div>
+
+    <!-- React app root -->
+    <div id="root">
+        <!-- Loading screen (will be replaced by React app) -->
+        <div class="loading-container">
+            <div class="loading-logo">🧠</div>
+            <h1 class="loading-title">Alzico</h1>
+            <p class="loading-subtitle">
+                Professional Cognitive Health Assessment Platform
+            </p>
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Loading application...</p>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- React app bundle will be injected here by webpack -->
+    <script>
+        // Hide loading screen once React app mounts
+        const checkAppLoaded = setInterval(() => {
+            const root = document.getElementById('root');
+            // Check if React has rendered by looking for any div with react attributes
+            const reactRoot = root ? root.querySelector('[data-reactroot], [data-react-root]') : null;
+            const hasReactContent = root && (reactRoot || root.children.length > 1 || root.querySelector('div[style]'));
+            
+            if (hasReactContent) {
+                console.log('React app detected, hiding loading screen and decorations');
+                const loadingContainer = document.querySelector('.loading-container');
+                const bgDecoration = document.querySelector('.bg-decoration');
+                if (loadingContainer) {
+                    loadingContainer.style.opacity = '0';
+                    setTimeout(() => {
+                        loadingContainer.style.display = 'none';
+                    }, 500);
+                }
+                if (bgDecoration) {
+                    bgDecoration.style.display = 'none';
+                }
+                clearInterval(checkAppLoaded);
+            }
+        }, 100);
+
+        // Fallback: hide after 5 seconds regardless (reduced from 15)
+        setTimeout(() => {
+            console.log('Fallback: hiding loading screen after timeout');
+            const loadingContainer = document.querySelector('.loading-container');
+            const bgDecoration = document.querySelector('.bg-decoration');
+            if (loadingContainer) {
+                loadingContainer.style.opacity = '0';
+                setTimeout(() => {
+                    loadingContainer.style.display = 'none';
+                }, 500);
+            }
+            if (bgDecoration) {
+                bgDecoration.style.display = 'none';
+            }
+            clearInterval(checkAppLoaded);
+        }, 5000);
+    </script>
+</body>
+</html>
